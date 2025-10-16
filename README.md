@@ -56,7 +56,7 @@ Python 3.10+
 
 ```Bash
 
-git clone https://github.com/your-username/skillconnect.git
+git clone https://github.com/ShivamR8972/skillconnect.git
 
 cd skillconnect
 
