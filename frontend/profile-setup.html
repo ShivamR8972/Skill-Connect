@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Profile • Skill Connect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+     <link rel="stylesheet" href="profile-setup.css">
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
+        .chart-container { 
+            position: relative; 
+            height: 18rem; 
+        }
+      body{
+        background-image: url(../images/Gemini_Generated_Image_cvqbq0cvqbq0cvqb.png);
+        margin: 0;
+        padding: 0;
+        background-repeat: repeat-x;
+        background-attachment: fixed;
+        background-position: center;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col font-sans">
+    <!-- Navbar -->
+    <header class="bg-white shadow sticky top-0 z-50">
+      <div class="mx-auto px-6 py-4 flex justify-between items-center">
+        <button
+          onclick="window.location.href='index.html'"
+          class="text-2xl font-bold text-blue-600 hover:text-blue-700"
+        >
+          Skill Connect
+        </button>
+        <nav id="navbar" class="space-x-6"></nav>
+      </div>
+    </header>
+
+    <main class="flex-grow max-w-8xl p-6 mt-8">
+      <h2 class="text-2xl font-bold text-blue-600 mb-6">My Profile</h2>
+      <p id="role" class="mb-6 text-gray-700"></p>
+
+      <!-- Recruiter View -->
+      <div
+        id="recruiter-view"
+        class="bg-white p-6 rounded-xl shadow-md hidden"
+      ></div>
+
+      <!-- Recruiter Form -->
+      <form
+        id="recruiter-form"
+        class="space-y-3 bg-white p-6 rounded-xl shadow-md hidden"
+        enctype="multipart/form-data"
+      >
+        <h3 class="text-sm text-gray-500 uppercase tracking-wide">Company Logo</h3>
+        <input name="company_logo_upload" placeholder="Upload Company Logo"
+        type="file"
+        class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
+        />
+
+        <h3 class="text-sm text-gray-500 uppercase tracking-wide">
+          Company Name
+        </h3>
+        <input
+          name="company_name"
+          placeholder="Company Name"
+          class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
+        />
+
+        <h3 class="text-sm text-gray-500 uppercase tracking-wide">
+          Industry
+        </h3>
+        <input
+          name="industry"
+          placeholder="industry"
+          class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
+        />
+
+        <h3 class="text-sm text-gray-500 uppercase tracking-wide">
+          Company Website
+        </h3>
+        <input
+          name="company_website"
+          placeholder="Company Website (https://...)"
+          class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
+        />
+
+        <h3 class="text-sm text-gray-500 uppercase tracking-wide">
+          Phone no.
+        </h3>
+        <input
+          name="phone"
+          placeholder="Phone no."
+          type="tel"
+          class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
+        />
+
+        <h3 class="text-sm text-gray-500 uppercase tracking-wide">
+          email
+        </h3>
+        <input
+          name="email"
+          placeholder="email"
+          class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
+        />
+
+        <h3 class="text-sm text-gray-500 uppercase tracking-wide">Location</h3>
+        <input
+          name="location"
+          placeholder="Location"
+          class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
+        />
+
+        <h3 class="text-sm text-gray-500 uppercase tracking-wide">
+          Linkedin URL
+        </h3>
+        <input
+          name="linkedin_url"
+          placeholder="Linkedin URL"
+          class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
+        />
+
+        <h3 class="text-sm text-gray-500 uppercase tracking-wide">
+          About Company
+        </h3>
+        <textarea
+          name="about"
+          placeholder="About company"
+          class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
+        ></textarea>
+
+        <div class="flex justify-between">
+          <button
+            type="submit"
+            class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700"
+          >
+            Save
+          </button>
+          <button
+            type="button"
+            id="cancel-recruiter"
+            class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600"
+          >
+            Cancel
+          </button>
+        </div>
+        <p
+          class="error text-red-600 text-sm text-center"
+          id="recruiter-error"
+        ></p>
+      </form>
+
+      <!-- Freelancer View -->
+      <div
+        id="freelancer-view"
+        class="bg-white p-6 rounded-xl shadow-md hidden"
+      ></div>
+
+      <!-- Freelancer Form -->
+      <form
+        id="freelancer-form"
+        class="space-y-3 bg-white p-6 rounded-xl shadow-md hidden"
+        enctype="multipart/form-data"
+      >
+        <h3 class="text-sm text-gray-500 uppercase tracking-wide">Profile Picture</h3>
+        <input name="profilepic_upload" placeholder="Upload Profile Picture"
+        type="file"
+        class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
+        />
+
+        <h3 class="text-sm text-gray-500 uppercase tracking-wide">Name</h3>
+        <input
+          name="name"
+          placeholder="Name"
+          class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
+        />
+        <h3 class="text-sm text-gray-500 uppercase tracking-wide">
+          Date of Birth
+        </h3>
+        <input
+          name="dob"
+          placeholder="DOB"
+          type="date"
+          class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
+        />
+
+        <h3 class="text-sm text-gray-500 uppercase tracking-wide">Phone no.</h3>
+        <input type="tel" name="phone" placeholder="Phone no." class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"/>
+
+        <h3 class="text-sm text-gray-500 uppercase tracking-wide">Email</h3>
+        <input type="email" name="email" placeholder="Email" class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"/>
+
+        
+        <h3 class="text-sm text-gray-500 uppercase tracking-wide">Location</h3>
+        <input type="text" name="location" 
+        placeholder="City,State" 
+        class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
+        />
+
+        <h3 class="text-sm text-gray-500 uppercase tracking-wide">Education</h3>
+        <textarea
+          name="education"
+          placeholder="Education"
+          class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
+        ></textarea>
+        <h3 class="text-sm text-gray-500 uppercase tracking-wide">
+          Experience
+        </h3>
+        <select
+          name="experience"
+          id="experience"
+          class="border rounded w-full p-2"
+        >
+          <option value="">-- Select Experience --</option>
+          <option value="fresher">Fresher</option>
+          <option value="junior">Junior (1-2 years)</option>
+          <option value="mid">Mid-level (3-5 years)</option>
+          <option value="senior">Senior (5+ years)</option>
+          <option value="expert">Expert (10+ years)</option>
+        </select>
+
+        <h3 class="text-sm text-gray-500 uppercase tracking-wide">Skills</h3>
+
+        <div class="relative inline-block w-full">
+          <!-- Toggle Button -->
+          <button
+            type="button"
+            id="skills-toggle"
+            class="w-full border border-gray-300 rounded-lg p-2 flex justify-between items-center focus:ring-2 focus:ring-blue-500 bg-white"
+          >
+            <span id="skills-label" class="text-gray-600">Select skills</span>
+            <svg
+              class="w-4 h-4 ml-2 text-gray-500"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              ></path>
+            </svg>
+          </button>
+
+          <!-- Dropdown Menu -->
+          <div
+            id="skills-menu"
+            class="absolute left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg max-h-60 overflow-y-auto hidden z-50"
+          >
+            <!-- checkboxes injected by JS -->
+          </div>
+        </div>
+
+        <!-- Hidden input that will actually submit the skills -->
+        <input type="hidden" name="skills" id="skills-hidden" />
+
+        <h3 class="text-sm text-gray-500 uppercase tracking-wide">
+          Portfolio URL
+        </h3>
+        <input
+          name="portfolio_url"
+          placeholder="Portfolio URL"
+          class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
+        />
+        <h3 class="text-sm text-gray-500 uppercase tracking-wide">
+          GitHub URL
+        </h3>
+        <input
+          name="github_url"
+          placeholder="GitHub URL"
+          class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
+        />
+        <h3 class="text-sm text-gray-500 uppercase tracking-wide">
+          Linkedin URL
+        </h3>
+        <input
+          name="linkedin_url"
+          placeholder="Linkedin URL"
+          class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
+        />
+
+        <div id="current-resume-display" class="text-sm text-gray-600"></div>
+
+        <h3 class="text-sm text-gray-500 uppercase tracking-wide">Resume</h3>
+        <input
+          name="resume_upload"
+          placeholder="Upload Your Resume"
+          type="file"
+          class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
+        />
+
+        <h3 class="text-sm text-gray-500 uppercase tracking-wide">
+          Expected hourly rate (in USD)
+        </h3>
+        <input
+          type="number"
+          step="0.5"
+          min="0.0"
+          name="expected_salary"
+          placeholder="$0.00"
+          class="w-full border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-500"
+        />
+
+        <h3 class="text-sm text-gray-500 uppercase tracking-wide">
+          Availability
+        </h3>
+        <select
+          name="availability"
+          id="availability"
+          class="border rounded w-full p-2"
+        >
+          <option value="">-- Select Availability --</option>
+          <option value="immediate">Immediate</option>
+          <option value="oneweek">1 Week</option>
+          <option value="twoweek">2 Weeks</option>
+          <option value="amonth">1 Month</option>
+          <option value="openToOffers">Open to offers</option>
+        </select>
+
+        <div class="flex justify-between">
+          <button
+            type="submit"
+            class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700"
+          >
+            Save
+          </button>
+          <button
+            type="button"
+            id="cancel-freelancer"
+            class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600"
+          >
+            Cancel
+          </button>
+        </div>
+        <p
+          class="error text-red-600 text-sm text-center"
+          id="freelancer-error"
+        ></p>
+      </form>
+    </main>
+
+    <script src="./main.js"></script>
+    <script src="./profile-setup.js"></script>
+  </body>
+</html>

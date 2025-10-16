@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recruiter Dashboard • Skill Connect</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .chart-container {
+      position: relative;
+      height: 18rem;
+      width: 100%;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
+      body{
+        background-image: url(../images/Gemini_Generated_Image_cvqbq0cvqbq0cvqb.png);
+        margin: 0;
+        padding: 0;
+        background-repeat: repeat-x;
+        background-attachment: fixed;
+        background-position: center;
+      }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans">
+
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="text-2xl font-bold text-blue-600 hover:text-blue-700">Skill Connect</a>
+      <nav id="navbar" class="space-x-6"></nav>
+    </div>
+  </header>
+
+  <main class="grid grid-cols-1 md:grid-cols-3 gap-6 p-6">
+
+    <div class="md:col-span-3 bg-white rounded-lg shadow-md p-6 flex flex-col md:flex-row justify-between items-start md:items-center animate-fade-in">
+      <div>
+        <h2 class="text-3xl font-bold text-gray-800">Welcome back, Recruiter! 👋</h2>
+        <p id="today-date" class="text-lg text-gray-500 mt-2"></p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4 md:mt-0">
+        <a href="post-job.html" class="text-center bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 transition">➕ Post Job</a>
+        <a href="my-jobs.html" class="text-center bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 transition">📂 View My Jobs</a>
+        <a href="applications.html" class="text-center bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 transition">👥 Review Applications</a>
+      </div>
+    </div>
+
+    <div class="md:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition animate-fade-in" style="animation-delay: 100ms;">
+        <h3 class="text-gray-500 text-sm">Total Jobs Posted</h3>
+        <p id="total-jobs" class="text-4xl font-bold text-gray-800 mt-2">0</p>
+      </div>
+      <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition animate-fade-in" style="animation-delay: 200ms;">
+        <h3 class="text-gray-500 text-sm">Total Applications</h3>
+        <p id="total-apps" class="text-4xl font-bold text-blue-600 mt-2">0</p>
+      </div>
+      <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition animate-fade-in" style="animation-delay: 300ms;">
+        <h3 class="text-gray-500 text-sm">Pending Applications</h3>
+        <p id="pending-apps" class="text-4xl font-bold text-yellow-500 mt-2">0</p>
+      </div>
+      <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition animate-fade-in" style="animation-delay: 400ms;">
+        <h3 class="text-gray-500 text-sm">Hired / Rejected</h3>
+        <p id="hired-rejected" class="text-4xl font-bold text-green-600 mt-2">0</p>
+      </div>
+    </div>
+
+    <div class="md:col-span-2 space-y-6">
+      <div class="bg-white rounded-lg shadow-md p-6 animate-fade-in" style="animation-delay: 500ms;">
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">Recent Applications</h2>
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Freelancer</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Job Title</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Status</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Date</th>
+              </tr>
+            </thead>
+            <tbody id="recent-applications-body" class="bg-white divide-y divide-gray-200">
+              <tr><td colspan="4" class="text-center p-4 text-gray-500">Loading applications...</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="mt-4 text-right">
+          <a href="applications.html" class="text-blue-600 font-semibold hover:underline">View All Applications →</a>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="bg-white rounded-lg shadow-md p-6 animate-fade-in" style="animation-delay: 600ms;">
+          <h2 class="text-xl font-semibold text-gray-800 mb-4">Applications per Job</h2>
+          <div class="chart-container"><canvas id="barChart"></canvas></div>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-6 animate-fade-in" style="animation-delay: 700ms;">
+          <h2 class="text-xl font-semibold text-gray-800 mb-4">Application Status Breakdown</h2>
+          <div class="chart-container"><canvas id="pieChart"></canvas></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="md:col-span-1">
+      <div class="bg-white rounded-lg shadow-md p-6 animate-fade-in" style="animation-delay: 800ms;">
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">Recent Activity</h2>
+        <ul id="recent-activity" class="space-y-4">
+           <li class="text-center p-4 text-gray-500">Loading activity...</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <script src="./main.js"></script>
+  <script src="./recruiter_dashboard.js"></script>
+</body>
+</html>

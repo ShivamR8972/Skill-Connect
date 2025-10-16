@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FAQ & Support • Skill Connect</title>
+      <style>
+      body{
+        background-image: url(../images/Gemini_Generated_Image_cvqbq0cvqbq0cvqb.png);
+        margin: 0;
+        padding: 0;
+        background-repeat: repeat-x;
+        background-attachment: fixed;
+        background-position: center;
+      }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col font-sans">
+    <header class="bg-white shadow sticky top-0 z-50">
+        <div class="mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-blue-600 hover:text-blue-700">Skill Connect</a>
+            <nav id="navbar" class="space-x-6"></nav>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-4xl mx-auto p-6 mt-8 w-full">
+        <h2 class="text-3xl font-bold text-blue-600 mb-8 text-center">Frequently Asked Questions & Support</h2>
+
+        <div id="faq-accordion" class="space-y-4 mb-16">
+            <div class="bg-white border border-gray-200 rounded-lg">
+                <button class="faq-question w-full text-left p-4 font-semibold text-gray-800 flex justify-between items-center">
+                    <span>How do I apply for a job?</span>
+                    <span class="transform transition-transform duration-300">▼</span>
+                </button>
+                <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 px-4">
+                    <p class="py-4 text-gray-600">You can browse jobs on the "Browse Jobs" page. Click on any job to see details and use the "Apply Now" button. This will open a form where you can write an optional cover letter and submit your application.</p>
+                </div>
+            </div>
+            <div class="bg-white border border-gray-200 rounded-lg">
+                <button class="faq-question w-full text-left p-4 font-semibold text-gray-800 flex justify-between items-center">
+                    <span>How do recruiters see my profile?</span>
+                    <span class="transform transition-transform duration-300">▼</span>
+                </button>
+                <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300 px-4">
+                    <p class="py-4 text-gray-600">When you apply for a job, recruiters can see the information you've added to your profile, such as your skills, experience, and resume. Keeping your profile complete and up-to-date is the best way to stand out.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white p-8 rounded-xl shadow-lg">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">Contact Support</h3>
+            <p class="text-gray-600 mb-6">Still have questions? Fill out the form below to open a pre-filled email in your default mail client.</p>
+            <div id="support-form" class="space-y-4">
+                <div>
+                    <label for="support-email" class="block text-sm font-medium text-gray-700">Your Email</label>
+                    <input type="email" id="support-email" placeholder="your-email@example.com" class="mt-1 block w-full border-gray-300 rounded-lg p-2">
+                </div>
+                <div>
+                    <label for="support-subject" class="block text-sm font-medium text-gray-700">Subject</label>
+                    <input type="text" id="support-subject" placeholder="e.g., Question about my profile" class="mt-1 block w-full border-gray-300 rounded-lg p-2">
+                </div>
+                <div>
+                    <label for="support-message" class="block text-sm font-medium text-gray-700">Message</label>
+                    <textarea id="support-message" rows="5" placeholder="Please describe your issue..." class="mt-1 block w-full border-gray-300 rounded-lg p-2"></textarea>
+                </div>
+                <a id="send-message-btn" href="#" class="block text-center w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700">
+                    Open Email
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <script src="./main.js"></script>
+    <script src="./faq-support.js"></script>
+</body>
+</html>

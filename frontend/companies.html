@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Companies • Skill Connect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
+        
+      body{
+        background-image: url(../images/Gemini_Generated_Image_cvqbq0cvqbq0cvqb.png);
+        margin: 0;
+        padding: 0;
+        background-repeat: repeat-x;
+        background-attachment: fixed;
+        background-position: center;
+      }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col font-sans">
+    <header class="bg-white shadow sticky top-0 z-50">
+        <div class="mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-blue-600 hover:text-blue-700">Skill Connect</a>
+            <nav id="navbar" class="space-x-6"></nav>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl mx-auto p-6 mt-8 w-full">
+        <h2 class="text-3xl font-bold text-blue-600 mb-2">Companies on SkillConnect</h2>
+        <p class="text-gray-600 mb-8">Discover the innovative companies hiring on our platform.</p>
+
+        <div id="company-list-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <p class="col-span-full text-gray-500">Loading companies...</p>
+        </div>
+    </main>
+
+    <script src="./main.js"></script>
+    <script src="./companies.js"></script>
+</body>
+</html>

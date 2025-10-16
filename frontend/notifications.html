@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notifications • Skill Connect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .notification-item.unread {
+            background-color: #eff6ff; /* Tailwind's blue-50 */
+            border-left: 4px solid #3b82f6; /* Tailwind's blue-500 */
+        }
+      body{
+        background-image: url(../images/Gemini_Generated_Image_cvqbq0cvqbq0cvqb.png);
+        margin: 0;
+        padding: 0;
+        background-repeat: repeat-x;
+        background-attachment: fixed;
+        background-position: center;
+      }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col font-sans">
+    <header class="bg-white shadow sticky top-0 z-50">
+        <div class="mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-blue-600 hover:text-blue-700">Skill Connect</a>
+            <nav id="navbar" class="space-x-6"></nav>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-4xl mx-auto p-6 mt-8 w-full">
+        <h2 class="text-3xl font-bold text-blue-600 mb-6">Notifications</h2>
+
+        <div id="notification-page-list" class="bg-white rounded-lg shadow-md divide-y divide-gray-200">
+            <p class="p-6 text-center text-gray-500">Loading notifications...</p>
+        </div>
+    </main>
+
+    <script src="./main.js"></script>
+    <script src="./notifications.js"></script>
+</body>
+</html>
